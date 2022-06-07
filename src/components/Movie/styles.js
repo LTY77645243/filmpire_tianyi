@@ -5,6 +5,28 @@ export default makeStyles( (theme) => ({
         padding: '10px',
     },
 
+    links: {
+        alignItems: 'center',
+        fontWeight: 'bolder',
+        textDecoration: 'none',
+        [theme.breakpoints.up('xs')]: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        '&:hover': {
+            cursor: 'pointer',
+        },
+    },
+
+    image: {
+        borderRadius:  '20px',
+        height: '300px',
+        marginButton: '10px',
+        '&:hover': {
+            transform: 'scale(1.05)',
+        },
+    },
+
     title: {
         color: theme.palette.text.primary,
         textOverflow: 'ellipsis',
