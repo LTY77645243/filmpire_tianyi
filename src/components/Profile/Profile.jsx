@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+//* fetch user name from state.
 
 const Profile = () => (
     <div>
