@@ -18,8 +18,6 @@ const NavBar = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
 
-    console.log(user);
-
     const token = localStorage.getItem('request_token');
     const sessionIdFromLocalStorage =  localStorage.getItem('session_id');
 
@@ -27,11 +25,9 @@ const NavBar = () => {
         const logInUser = async () => {
             if (token) {
                 if (sessionIdFromLocalStorage) {
-                    console.log(1);
                     const { data: userData } = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`);
                     dispatch(setUser(userData)); 
                 } else {
-                    console.log(1);
                     const sessionId = await createSessionId();
                     const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`); 
                     dispatch(setUser(userData));
@@ -59,7 +55,7 @@ const NavBar = () => {
                     )}
                     <IconButton 
                         color="inherit" 
-                        sx={{ ml: 1}} 
+                        sx={{ ml: 1 }} 
                         onClick={() => {}}
                     >
                         {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 /> }
