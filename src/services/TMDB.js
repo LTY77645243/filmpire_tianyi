@@ -1,6 +1,5 @@
 // Manage TMDB APIs
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Movies } from '../components';
 
 const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
 // /movie/popular?api_key=<<api_key>>&language=en-US&page=1
@@ -47,6 +46,16 @@ export const tmdbApi = createApi({
         //* Get user specific lists
         getRecommendations: builder.query({
             query: ({movie_id, list}) => `movie/${movie_id}/${list}?api_key=${tmdbApiKey}`  
+        }),
+
+        //* Get actor info
+        getActorsDetails: builder.query({
+            query: (id) => `person/${id}?api_key=${tmdbApiKey}`,
+        }),
+
+        // Get movies by actor id
+        getMoviesByActorId: builder.query({
+            query: ({ id, page }) => `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`,
         })
     }),
 });
@@ -55,6 +64,8 @@ export const {
     useGetGenresQuery,
     useGetMoviesQuery,
     useGetMovieQuery,
-    useGetRecommendationsQuery,  
+    useGetRecommendationsQuery,
+    useGetActorsDetailsQuery,
+    useGetMoviesByActorIdQuery,
 } = tmdbApi; 
 
