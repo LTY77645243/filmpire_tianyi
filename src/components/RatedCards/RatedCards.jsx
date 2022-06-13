@@ -6,7 +6,6 @@ import useStyles from './styles';
 
 const RatedCards = ({ title, data }) => {
     const classes = useStyles();
-
     return (
         <Box>
             <Typography variant='h5' gutterBottom>{title}</Typography>

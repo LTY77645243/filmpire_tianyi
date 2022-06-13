@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, useMediaQuery, Rating } from '@mui/material';
+import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, Rating } from '@mui/material';
 import { Movie as MovieIcon, Theaters, Language, PlusOne, Remove, Favorite, FavoriteBorderOutlined, ArrowBack } from '@mui/icons-material';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FavoriteBorderIcon  from '@mui/icons-material/FavoriteBorder';
 
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,8 +22,8 @@ const MovieInformation = () => {
 
     const { data, isFetching, error } = useGetMovieQuery(id);
     const { data: recommendations, isFetching: isRecommendationsFetching } = useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
-    const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, seesionId: localStorage.getItem('session_id'), page: 1});
-    const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, seesionId: localStorage.getItem('session_id'), page: 1});
+    const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1});
+    const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1});
 
     const [isMovieFavorited, setIsMovieFavorited] = useState(false);
     const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
@@ -57,8 +55,6 @@ const MovieInformation = () => {
         
         setIsMovieWatchlisted((prev) => !prev); 
     };
-
-    console.log({ isMovieWatchlisted });
 
     if (isFetching) {
         return (

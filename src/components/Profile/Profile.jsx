@@ -39,8 +39,7 @@ const Profile = () => {
                         <RatedCards title='Favorite Movies' data={favoriteMovies} />
                         <RatedCards title='Watchlist' data={watchlistMovies} />
                     </Box>
-                )
-            }
+                )}
         </Box>
     );
 };
