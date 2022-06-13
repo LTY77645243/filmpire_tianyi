@@ -32,6 +32,11 @@ const Sidebar = ({ setMobileOpen }) => {
     const { data, isFetching } = useGetGenresQuery();
     const dispatch = useDispatch(); //* transfer data
 
+    useEffect(() => {
+        // sidebar closes when genre changes in moblie devices
+        setMobileOpen(false)
+    }, [genreIdOrCategoryName])
+
 
     return (
         <>
